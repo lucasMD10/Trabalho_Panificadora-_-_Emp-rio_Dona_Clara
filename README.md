@@ -10,7 +10,9 @@ Escolhi um **site responsivo de pré-encomendas para retirada**. Ele combina apr
 
 ## Protótipo e telas
 
-O [protótipo documentado](docs/prototipo.md) descreve a página inicial, o cardápio, o painel do pedido, o fluxo do cliente, as decisões visuais e a relação entre cada funcionalidade e a dor do caso. O site implementado é navegável e serve como protótipo interativo.
+O [protótipo documentado](docs/prototipo.md) descreve a página inicial, o cardápio, o painel do pedido, o fluxo do cliente, as decisões visuais e a relação entre cada funcionalidade e a dor do caso. O [wireframe visual](docs/wireframe.svg) apresenta as telas principais. O site implementado é navegável e serve como protótipo interativo.
+
+![Wireframe da página inicial e do painel de pedido](docs/wireframe.svg)
 
 ## O que funciona
 
@@ -31,6 +33,7 @@ Site estático sem dependências de build: `index.html` organiza as seções e o
 .
 ├── assets/favicon.svg
 ├── docs/prototipo.md
+├── docs/wireframe.svg
 ├── index.html
 ├── styles.css
 ├── script.js
