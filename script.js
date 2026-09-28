@@ -17,6 +17,7 @@ function renderProducts(filter='todos'){
   $('#product-grid').innerHTML=visible.map(p=>`<article class="product"><div class="product-visual" style="--tile:${p.color}"><svg viewBox="0 0 200 200" aria-hidden="true">${artwork[p.shape]}</svg></div><div class="product-body"><span class="product-tag">${categoryNames[p.category]}</span><h3>${p.name}</h3><p>${p.description}</p><small class="availability">${p.stock} disponíveis · antecedência ${p.leadHours}h</small>${p.options.length?`<label>Escolha uma opção<select aria-label="Opção para ${p.name}" data-option="${p.id}">${p.options.map(o=>`<option>${o}</option>`).join('')}</select></label>`:''}<div class="product-bottom"><strong>${formatMoney((p.cents/100))}</strong><button class="add-button" type="button" data-add="${p.id}" ${p.stock<p.minQty?'disabled':''} aria-label="Adicionar ${p.name} ao pedido">${p.stock<p.minQty?'Indisponível':'Adicionar +'}</button></div></div></article>`).join('');
 }
 function addProduct(id){
+  $('#order-result').hidden=true;$('#form-status').textContent='';
   const product=products.find(p=>p.id===id);
   const option=$(`[data-option="${id}"]`)?.value||'';
   const key=`${id}:${option}`;
