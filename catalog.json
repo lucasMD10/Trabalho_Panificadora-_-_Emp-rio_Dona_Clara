@@ -1,0 +1,90 @@
+[
+  {
+    "id": "paonatural",
+    "name": "Pão de fermentação natural",
+    "category": "paes",
+    "description": "Casca crocante, miolo macio e fermentação lenta. Unidade de 500 g.",
+    "cents": 2490,
+    "color": "#e7d4b4",
+    "shape": "loaf",
+    "options": [],
+    "leadHours": 1,
+    "stock": 30,
+    "minQty": 1
+  },
+  {
+    "id": "paoqueijo",
+    "name": "Pão de queijo artesanal",
+    "category": "paes",
+    "description": "Porção com 6 unidades, preparada com queijo e polvilho.",
+    "cents": 1800,
+    "color": "#e6e1c7",
+    "shape": "round",
+    "options": [],
+    "leadHours": 1,
+    "stock": 40,
+    "minQty": 1
+  },
+  {
+    "id": "bolo",
+    "name": "Bolo para compartilhar",
+    "category": "doces",
+    "description": "Bolo de 1 kg para o café da tarde ou para celebrar.",
+    "cents": 5800,
+    "color": "#e8d6cc",
+    "shape": "cake",
+    "options": [
+      "Cenoura com chocolate",
+      "Laranja",
+      "Chocolate"
+    ],
+    "leadHours": 24,
+    "stock": 12,
+    "minQty": 1
+  },
+  {
+    "id": "cookie",
+    "name": "Cookie da casa",
+    "category": "doces",
+    "description": "Cookie de 90 g com bordas douradas e gotas de chocolate.",
+    "cents": 1190,
+    "color": "#ddd8bf",
+    "shape": "cookie",
+    "options": [],
+    "leadHours": 1,
+    "stock": 50,
+    "minQty": 1
+  },
+  {
+    "id": "tabua",
+    "name": "Tábua de frios",
+    "category": "encomendas",
+    "description": "Seleção para até 4 pessoas, montada no dia da retirada.",
+    "cents": 8900,
+    "color": "#d8dfce",
+    "shape": "board",
+    "options": [
+      "Tradicional",
+      "Vegetariana"
+    ],
+    "leadHours": 24,
+    "stock": 10,
+    "minQty": 1
+  },
+  {
+    "id": "coffee",
+    "name": "Coffee break",
+    "category": "encomendas",
+    "description": "Por pessoa: mini sanduíche, fatia de bolo, pão de queijo e suco. Mínimo de 5 pessoas.",
+    "cents": 3500,
+    "color": "#e5ddd2",
+    "shape": "coffee",
+    "options": [
+      "Tradicional",
+      "Vegetariano"
+    ],
+    "leadHours": 48,
+    "stock": 40,
+    "minQty": 5
+  }
+]

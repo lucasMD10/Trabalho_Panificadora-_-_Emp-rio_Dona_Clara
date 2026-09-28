@@ -1,38 +1,41 @@
-# Protótipo e fluxo de navegação
+# Protótipo e decisões de design
 
-O protótipo navegável é a própria interface implementada em `index.html`. Este documento registra as telas e as decisões que orientaram o desenvolvimento.
+Planejei um web app com duas áreas: a vitrine acessível ao cliente e a gestão utilizada pela equipe. Usei o estudo de caso da Dona Clara como referência e organizei a experiência em torno do pedido para retirada.
 
-## 1. Página inicial
+## Telas que desenhei
 
-**Objetivo:** apresentar a panificadora, sua proposta artesanal e um acesso direto ao cardápio.
+1. **Início:** apresento a marca e a proposta artesanal, com uma chamada para o cardápio.
+2. **Cardápio:** mostro categorias, produtos, preços, variações e saldo disponível.
+3. **Pedido:** reúno itens, quantidades, total e informações da retirada em um painel lateral.
+4. **Confirmação de recebimento:** mostro o número da encomenda e o acesso ao acompanhamento.
+5. **Acompanhamento:** apresento os itens, a retirada e o status atualizado.
+6. **Entrada da equipe:** solicito a senha na versão com servidor.
+7. **Gestão de encomendas:** organizo busca, filtros, itens, observações e ações de status.
+8. **Disponibilidade:** permito atualizar o saldo livre para novos pedidos.
 
-- Cabeçalho: marca, links para Cardápio, Como funciona e Nossa história, botão Meu pedido.
-- Destaque: mensagem principal, chamada para explorar o cardápio, ilustração de pães.
-- Cardápio: filtros por categoria e produtos com preço ilustrativo, descrição e botão Adicionar.
-- Como funciona: três passos que deixam claro que o pedido exige confirmação.
-- Nossa história: tradição da Dona Clara e convite para escolher produtos.
+![Wireframe](wireframe.svg)
 
-## 2. Seleção de produto
+## Fluxo que implementei
 
-O cliente pode filtrar itens, escolher sabor ou opção nos produtos que possuem variações e adicioná-los ao pedido. O contador no cabeçalho indica a quantidade total. O carrinho permite aumentar ou diminuir cada item.
+Cliente: início → cardápio → escolha de sabor e quantidade → revisão do pedido → dados de retirada → envio → acompanhamento.
 
-## 3. Pedido e retirada
+Equipe: entrada → lista de encomendas → confirmação → preparo → pronto → retirado. Permito cancelar antes da retirada e devolver os itens ao saldo disponível.
 
-No painel lateral, o cliente confere os itens e o total estimado, preenche nome, telefone, data, horário desejado e observações. Ao concluir, a demonstração copia um resumo estruturado. Não há envio real nem reserva de estoque.
+## Relação com o estudo de caso
 
-**Caminho:** início → cardápio → variação e produto → meu pedido → dados de retirada → resumo copiado → confirmação posterior pela padaria.
-
-## 4. Relação com as dores do caso
-
-| Dor apresentada | Resposta no protótipo | Limite desta versão |
+| Referência | Problema que identifiquei | Decisão que tomei |
 | --- | --- | --- |
-| Cliente precisa encomendar sem fila | Seleção de produtos e dados de retirada no site | O resumo precisa ser encaminhado à padaria fora da demonstração |
-| Trocas de sabores e dados perdidos | Variações e campos padronizados no resumo | Não há painel interno nem banco de dados |
-| Produto pode acabar | Aviso de confirmação obrigatória | Não há estoque em tempo real |
-| Pouca presença digital | Página pública com história e catálogo | Conteúdo e identidade visual precisam ser validados com o negócio |
+| Seção 1 — Cenário Atual | Anotações em caderno e atendimento no balcão | Estruturei os dados da encomenda e a lista de gestão. |
+| Seção 2 — Dor do Cliente | Fila e risco de falta do produto | Permiti solicitar retirada e reservar a quantidade disponível. |
+| Seção 2 — Dor do Cliente | Trocas de sabores e atrasos | Exibi o sabor em cada item e validei antecedência e horário. |
+| Seção 3 — Informações Adicionais | Presença digital fraca e oportunidade de coffee breaks | Criei uma vitrine pública e uma opção de encomenda para empresas. |
+| Seção 4 — Instruções | Autonomia para escolher a solução | Escolhi o web app para atender o cliente e organizar a equipe. |
+| Seção 5 — Avaliação | Protótipo e repositório profissional | Registrei as telas, a justificativa e a execução no README. |
 
-## 5. Decisões visuais
+## Direção visual
 
-Paleta verde, creme e tons de pão; tipografia de leitura simples combinada com títulos editoriais; composição responsiva para celular e computador. A ilustração foi construída no próprio CSS, sem fotos de terceiros.
+Escolhi verde, creme e tons de pão para a identidade da Dona Clara. Combinei títulos serifados com textos de leitura simples. Usei ilustrações originais em CSS e SVG, sem depender de fotografias de outras padarias. Mantive o foco no produto, no pedido e no retorno claro das ações.
 
-O cardápio, os preços, a marca gráfica e os dados de operação são **hipóteses para o estudo acadêmico**, não informações fornecidas pelo enunciado.
+## Escopo da apresentação
+
+Implementei o fluxo centralizado com Node.js e persistência em arquivo. Para o Pages, ofereço o mesmo fluxo com armazenamento no navegador, adequado à apresentação no mesmo dispositivo. Documentei essa diferença no README para não confundir a publicação estática com um servidor de pedidos.

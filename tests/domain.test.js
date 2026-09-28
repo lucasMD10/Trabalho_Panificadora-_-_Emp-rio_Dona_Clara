@@ -1,0 +1,14 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const {validateOrder,setStatus}=require('../domain');
+const catalog=require('../catalog.json');
+const products=()=>structuredClone(catalog);
+const now=Date.parse('2026-10-01T10:00:00-03:00');
+const input=()=>({nome:'Lucas Marcondes',telefone:'41999999999',data:'2026-10-03',hora:'10:00',items:[{id:'bolo',quantity:2,option:'Laranja'}]});
+test('calcula o preço a partir do catálogo, sem confiar no cliente',()=>{const data=input();data.total=1;const order=validateOrder(data,products(),now);assert.equal(order.total,11600);assert.equal(order.status,'Recebido')});
+test('recusa encomenda sem antecedência',()=>{const data=input();data.data='2026-10-01';data.hora='12:00';assert.throws(()=>validateOrder(data,products(),now),/antecedência/)});
+test('soma estoque de sabores diferentes',()=>{const data=input();data.items=[{id:'bolo',quantity:8,option:'Laranja'},{id:'bolo',quantity:8,option:'Chocolate'}];assert.throws(()=>validateOrder(data,products(),now),/indisponível/)});
+test('valida horário de domingo',()=>{const data=input();data.data='2026-10-04';data.hora='14:00';assert.throws(()=>validateOrder(data,products(),now),/Retirada/)});
+test('valida mínimo do coffee break e opção de sabor',()=>{const data=input();data.items=[{id:'coffee',quantity:1,option:'Tradicional'}];assert.throws(()=>validateOrder(data,products(),now),/mínima/);data.items=[{id:'bolo',quantity:1,option:'Inexistente'}];assert.throws(()=>validateOrder(data,products(),now),/opção/)});
+test('cancelamento devolve reserva uma única vez',()=>{const list=products(),order=validateOrder(input(),list,now);list.find(p=>p.id==='bolo').stock-=2;setStatus(order,'Cancelado',list);assert.equal(list.find(p=>p.id==='bolo').stock,12);assert.throws(()=>setStatus(order,'Cancelado',list),/inválida/)});
+test('impede pular da entrada para retirada',()=>{const list=products(),order=validateOrder(input(),list,now);assert.throws(()=>setStatus(order,'Retirado',list),/inválida/);for(const s of ['Confirmado','Em preparo','Pronto','Retirado'])setStatus(order,s,list);assert.equal(order.status,'Retirado')});

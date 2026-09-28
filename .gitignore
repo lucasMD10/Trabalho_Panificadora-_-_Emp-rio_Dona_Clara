@@ -16,3 +16,8 @@ coverage/
 # Arquivos temporários
 *.log
 *.tmp
+
+# Pedidos e dados locais
+data/
+*.pid
+screenshots/
